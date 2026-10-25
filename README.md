@@ -78,9 +78,13 @@ The container uses SQLite for this learning project. For persistent production d
 
 The workflow at `.github/workflows/ci.yml` runs Django checks and tests, then installs frontend dependencies and builds the React app.
 
+## Deploy to Render (assignment demo)
+
+See `docs/deployment.md` and the root `render.yaml` Blueprint. Connect the GitHub repository to Render, create the Blueprint service, and use the assigned public URL. The demo uses ephemeral SQLite storage, so do not use it for real customer data.
+
 ## Deploy to IBM Cloud Code Engine
 
-See `docs/deployment.md`. Deployment requires your IBM Cloud account, CLI login, a Code Engine project, and a configured secret. Do not commit credentials. A single-container build is supplied as a starting point; configure persistent/managed storage and a durable `DJANGO_SECRET_KEY` before using it for real users.
+See `docs/deployment.md` for Code Engine guidance. Deployment requires an activated IBM Cloud account, CLI login, a Code Engine project, and a configured secret. Do not commit credentials.
 
 ## Evidence checklist
 

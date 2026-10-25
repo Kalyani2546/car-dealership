@@ -1,6 +1,23 @@
 # IBM Cloud Code Engine deployment
 
-This repository builds a single web image with the React production bundle and Django backend. You must supply your own IBM Cloud account/project and credentials. Never check secrets into the repository.
+This repository builds a single web image with the React production bundle and Django backend. Never check deployment credentials or secrets into the repository.
+
+## Deploy on Render (assignment demo)
+
+The root `render.yaml` is a Render Blueprint for the app. To deploy it:
+
+1. Sign in to Render and connect the GitHub account that can access `Kalyani2546/car-dealership`.
+2. In the Render dashboard, choose **New + → Blueprint**, select this repository and the `main` branch, then apply the `render.yaml` configuration.
+3. Review the service settings, create the web service, and wait for its first deploy to finish.
+4. Open the service's `onrender.com` URL and verify `/` and `/api/dealers/` load successfully. Record that exact public URL in the local `deploymentURL` file for the assignment.
+
+The Blueprint creates a free demo service. Free services may sleep when idle, and the configured SQLite database is stored under `/tmp`, which is ephemeral and can reset on restart/redeploy. This is intended for short assignment evidence capture, not production data. Do not add real customer information.
+
+The container binds to Render's assigned `PORT`; Django is configured with the Render host and HTTPS CSRF origins. Render generates `DJANGO_SECRET_KEY` as a service secret.
+
+## IBM Cloud Code Engine
+
+Alternatively, deploy on IBM Cloud Code Engine. This requires an activated IBM Cloud account/project and CLI login. Follow the remaining steps below.
 
 ## Prepare
 
