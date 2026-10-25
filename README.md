@@ -1,4 +1,4 @@
-# Cars Dealership
+# fullstack_developer_capstone
 
 A full-stack dealership directory and review application built with Django, React, and SQLite. Customers can browse U.S. dealerships, filter by state, register and sign in, read and submit reviews, and inspect lightweight sentiment analysis. The repository also includes Docker, GitHub Actions, sample data, and IBM Cloud Code Engine deployment guidance.
 
