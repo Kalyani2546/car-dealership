@@ -1,0 +1,36 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install backend dependencies
+        run: pip install -r server/requirements.txt
+      - name: Check Django configuration
+        working-directory: server
+        run: python manage.py check
+      - name: Run backend tests
+        working-directory: server
+        run: python manage.py test
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+          cache-dependency-path: frontend/client/package-lock.json
+      - name: Install frontend dependencies
+        working-directory: frontend/client
+        run: npm ci
+      - name: Build frontend
+        working-directory: frontend/client
+        run: npm run build
